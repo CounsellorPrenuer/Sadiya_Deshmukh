@@ -73,11 +73,12 @@ export default async function Home() {
 
       <section id="testimonials" className="section">
         <h2>Testimonials</h2>
-        <div className="cards">
+        <div className="testimonial-grid">
           {(data?.testimonials || []).map((t, i) => (
-            <article className="card testimonial" key={`${t.name}-${i}`}>
-              <p>"{t.quote}"</p>
-              <p><strong>{t.name}</strong></p>
+            <article className="testimonial-card" key={`${t.name}-${i}`}>
+              <div className="testimonial-quote-mark">“</div>
+              <p className="testimonial-quote">{t.quote}</p>
+              <p className="testimonial-author"><strong>{t.name}</strong></p>
             </article>
           ))}
         </div>

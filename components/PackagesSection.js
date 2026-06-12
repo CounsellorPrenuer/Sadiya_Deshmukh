@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import {useMemo, useState} from 'react';
 
 const topTabs = ["Mentoria's Plans", 'Customise Your Mentorship Plan'];
@@ -241,11 +240,6 @@ export default function PackagesSection({packages = []}) {
               
               return (
                 <article className={`mentor-card ${isPremium ? 'premium-tier-card' : 'standard-tier-card'}`} key={`${pkg.title}-${i}`}>
-                  {pkg.imageUrl ? (
-                    <div className="mentor-logo">
-                      <Image src={pkg.imageUrl} alt={pkg.title} width={96} height={96} />
-                    </div>
-                  ) : null}
                   <p className="plan-tier">{pkg.subtitle}</p>
                   <h3>{pkg.title}</h3>
                   <div className="package-price">{formatPrice(pkg.price)}</div>

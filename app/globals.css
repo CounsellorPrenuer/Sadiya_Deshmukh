@@ -324,34 +324,44 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: 560px;
-  padding: 28px 30px 32px;
+  min-height: 540px;
+  padding: 22px 26px 28px;
   background: #fff;
-  border-radius: 18px;
+  border-radius: 20px;
+  border: 1px solid #e1e5f2;
+  box-shadow: 0 10px 26px rgba(71, 81, 153, 0.08);
+  position: relative;
 }
-.mentor-logo {
-  width: 96px;
-  height: 96px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 18px;
+.mentor-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 6px;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(90deg, #4c63ea 0%, #7080f1 100%);
 }
-.mentor-logo img { width: 84px; height: 84px; object-fit: contain; }
+.mentor-card.premium-tier-card::before {
+  background: linear-gradient(90deg, #4c63ea 0%, #4c63ea 100%);
+}
 .plan-tier {
   font: 600 0.88rem/1 "Poppins", sans-serif;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin: 16px 0 14px;
   color: #8d8fd9;
+  letter-spacing: 0.04em;
 }
 .mentor-card h3 {
-  font-size: clamp(1.9rem, 2.7vw, 3rem);
-  margin-bottom: 12px;
+  font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+  margin-bottom: 10px;
   text-align: left;
+  color: #1b2240;
 }
 .package-price {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   color: var(--blue);
-  font: 900 clamp(2.1rem, 3vw, 3.2rem) / 1 "Poppins", sans-serif;
+  font: 900 clamp(2.1rem, 3vw, 3.1rem) / 1 "Poppins", sans-serif;
+  letter-spacing: -0.04em;
 }
 .feature-list {
   margin: 0 0 22px;
@@ -363,9 +373,9 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  margin-bottom: 10px;
-  color: #52596a;
-  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #5b6274;
+  font-size: 0.97rem;
   line-height: 1.55;
 }
 .feature-list li svg {
@@ -378,7 +388,14 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
   text-decoration: line-through;
 }
 .feature-list li.excluded svg { color: #8d96b3; }
-.buy-now-btn { margin-top: auto; min-width: 132px; align-self: flex-start; border-radius: 18px; }
+.buy-now-btn {
+  margin-top: auto;
+  min-width: 126px;
+  align-self: flex-start;
+  border-radius: 999px;
+  padding-inline: 24px;
+  box-shadow: 0 8px 18px rgba(81, 96, 230, 0.18);
+}
 .btn-standard { background: #8d8cf1; }
 .btn-premium { background: var(--blue); }
 
@@ -433,7 +450,48 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
 .custom-content .btn { padding: 9px 18px; font-size: 0.82rem; }
 
 #testimonials {
-  background: #fff;
+  background:
+    radial-gradient(circle at top left, rgba(81, 96, 230, 0.06), transparent 30%),
+    #fff;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.testimonial-card {
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid #dfe5f4;
+  background: linear-gradient(180deg, #fff 0%, #fafbff 100%);
+  box-shadow: 0 8px 22px rgba(33, 43, 88, 0.06);
+  padding: 26px 24px 22px;
+  min-height: 220px;
+  text-align: center;
+}
+.testimonial-card:nth-child(4n) {
+  grid-column: 1 / span 1;
+}
+.testimonial-quote-mark {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  font-size: 3.3rem;
+  line-height: 1;
+  color: rgba(81, 96, 230, 0.18);
+  font-family: "Poppins", sans-serif;
+}
+.testimonial-quote {
+  margin-top: 16px;
+  color: #5a6478;
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+.testimonial-author {
+  margin-top: 12px;
+  color: #2b3650;
+  font-size: 0.98rem;
 }
 
 #contact-us {
@@ -484,7 +542,8 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
   .contact-wrap,
   .mentor-grid,
   .custom-grid,
-  .cards {
+  .cards,
+  .testimonial-grid {
     grid-template-columns: 1fr;
   }
 
@@ -509,4 +568,5 @@ p { margin: 0; line-height: 1.75; color: var(--muted); }
   .mentor-card { padding: 20px; }
   .custom-card { grid-template-columns: 1fr; }
   .custom-icon-wrapper { width: 100%; min-height: 140px; }
+  .testimonial-card { min-height: auto; }
 }
