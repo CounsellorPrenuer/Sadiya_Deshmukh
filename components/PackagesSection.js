@@ -115,7 +115,16 @@ const getCustomIcon = (title) => {
 
 const formatPrice = (price) => {
   if (!price) return '';
-  return price.replace(/s+/g, ' ').trim();
+  const normalized = String(price)
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^â‚¹\s*/u, '₹ ')
+    .replace(/^\?\s*/u, '₹ ')
+    .replace(/^Rs\.?\s*/i, '₹ ');
+
+  if (normalized.startsWith('₹')) return normalized;
+  if (/\d/.test(normalized)) return `₹ ${normalized}`;
+  return normalized;
 };
 
 // Checkmark and Crossmark icons for Features List
