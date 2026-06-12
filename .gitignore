@@ -1,0 +1,14 @@
+node_modules
+.next
+.sanity
+out
+scratch
+extracted_doc
+claryntia.bundle.css
+claryntia.bundle.js
+claryntia.html
+localhome.html
+For Website.docx
+For Website.zip
+.env*
+!.env.example
